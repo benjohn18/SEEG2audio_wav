@@ -1,47 +1,92 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
-<head>
+<html lang="en"> <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>我的语音合成结果</title>
-    <style>
-        body { font-family: Arial, sans-serif; line-height: 1.6; padding: 20px; max-width: 800px; margin: auto; }
-        .audio-demo { margin-bottom: 20px; border: 1px solid #eee; padding: 15px; border-radius: 8px; }
-        audio { width: 100%; margin-top: 10px; }
-        h2 { color: #333; }
+    <title>SEEG2audio Result Demo</title> <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            padding: 20px;
+            max-width: 960px; /* Increased max-width for 3 columns */
+            margin: auto;
+            color: #333;
+        }
+        h1, h2, h3 {
+            color: #333;
+        }
+        .demo-section {
+            margin-bottom: 30px;
+            border: 1px solid #ddd; /* Lighter grey border for separation */
+            padding: 20px;
+            border-radius: 8px;
+            background-color: #f9f9f9; /* Light grey background for the box */
+        }
+        .meta-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr; /* Three columns for Chinese, Pinyin, English */
+            gap: 15px;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee; /* Separator for meta info */
+        }
+        .meta-item {
+            text-align: center;
+            font-weight: bold;
+            font-size: 1.1em;
+            color: #555;
+        }
+        .audio-pair {
+            display: grid;
+            grid-template-columns: 1fr 1fr; /* Two columns for Reference and Decoded */
+            gap: 20px; /* Space between audio boxes */
+        }
+        .audio-box {
+            border: 1px solid #ccc;
+            padding: 15px;
+            border-radius: 6px;
+            background-color: #fff; /* White background for audio boxes */
+        }
+        .audio-box h3 {
+            margin-top: 0;
+            margin-bottom: 10px;
+            color: #007bff; /* Blue for titles like Reference/Decoded */
+        }
+        audio {
+            width: 100%;
+            margin-top: 10px;
+        }
+        .description {
+            font-size: 0.9em;
+            color: #666;
+            margin-top: 10px;
+        }
     </style>
 </head>
 <body>
-    <h1>我的语音合成结果 Demo</h1>
-    <p>这里展示了我的文献中语音合成的示例。</p>
-
-    <div class="audio-demo">
-        <h2>Demo 1: 标准句子</h2>
-        <audio controls>
-            <source src="demo/3_gt.wav" type="audio/wav">
-            您的浏览器不支持音频播放。
-        </audio>
-        <p>描述：这是一个使用模型A合成的标准句子。</p>
+    <h1>SEEG2 Audio Synthesis Demo</h1> <p>This page presents synthesis results from our SEEG2audio_wav model.</p> <div class="demo-section">
+        <div class="meta-row">
+            <div class="meta-item">Chinese: 得空地挺好</div> 
+            <div class="meta-item">Pinyin: dé kòng dì tǐng hǎo</div> 
+            <div class="meta-item">English: The open space is good</div> </div>
+        <div class="audio-pair">
+            <div class="audio-box">
+                <h3>Reference Audio</h3>
+                <audio controls>
+                    <source src="demo/gt_yachi.wav" type="audio/wav"> Your browser does not support the audio element.
+                </audio>
+                <p class="description">Original recording of the word "teeth" in Chinese.</p>
+            </div>
+            <div class="audio-box">
+                <h3>Decoded Audio</h3>
+                <audio controls>
+                    <source src="demo/decoded_yachi.wav" type="audio/wav"> Your browser does not support the audio element.
+                </audio>
+                <p class="description">Synthesized audio of the word "teeth" from our model.</p>
+            </div>
+        </div>
     </div>
 
-    <div class="audio-demo">
-        <h2>Demo 2: 情感表达</h2>
-        <audio controls>
-            <source src="demo/sub25single.wav" type="audio/wav">
-            您的浏览器不支持音频播放。
-        </audio>
-        <p>描述：这是模型B在表达特定情感时的效果。</p>
-    </div>
 
-    <div class="audio-demo">
-        <h2>Demo 2: 情感表达</h2>
-        <audio controls>
-            <source src="demo/sub25mutil.wav" type="audio/wav">
-            您的浏览器不支持音频播放。
-        </audio>
-        <p>描述：这是模型B在表达特定情感时的效果。</p>
-    </div>
-
-    <p>感谢您的聆听！</p>
+    <p>Thank you for listening!</p>
 </body>
 </html>
